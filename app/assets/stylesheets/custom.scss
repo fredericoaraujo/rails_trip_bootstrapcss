@@ -3,13 +3,14 @@
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
+@import 'bootstrap-icons/font/bootstrap-icons';
 
-$primary: #6F42C1; // set the $primary variable
-$secondary: #9F3FD9;
+$primary: #2675A6; // set the $primary variable
+$secondary: #D97E4A;
 $success: #38C29E;
 $info: #0091D5;
-$warning: #F5C63B;
-$danger: #C26F55;
+$warning: #F2BE5C;
+$danger: #BF6550;
 $light: $gray-100;
 $dark: $gray-800;
 

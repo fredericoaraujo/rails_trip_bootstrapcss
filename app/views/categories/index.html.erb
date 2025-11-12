@@ -1,20 +1,25 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Categories" %> <%= link_to "New category",
-new_category_path %>
-
+<div class="row">
+  <div class="col-10">
+    <h1 class="text-secondary-emphasis">Categories</h1>
+  </div>
+  <div class="col-2">
+    <% content_for :title, "Categories" %> <%= link_to "+",
+    new_category_path, class: 'btn btn-sm btn-primary rounded' %>
+  </div>
+</div>
 <div id="categories">
   <% @categories.each do |category| %>
   <div id="<%= dom_id category %>">
     <div class="row col-12 bg-body">
       <div class="col-8">
-        <p class="fs-3 fw-bold text-primary"><%= category.name %></p>
+        <p class="fs-3 fw-bold text-secondary"><%= category.name %></p>
       </div>
       <div class="col-4 align-content-between pt-2">
         <p>
           <%= link_to category, class: 'btn btn-sm bg-indigo-200' do %>
-            <i class="bi bi-eye"></i> Detalhar
-          <% end %>
+          <i class="bi bi-eye"></i> Detalhar <% end %>
         </p>
       </div>
     </div>

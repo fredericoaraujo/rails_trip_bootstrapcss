@@ -1,0 +1,33 @@
+<%= form_with(model: category) do |form| %>
+  <% if category.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+      <ul>
+        <% category.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :super_category_id, 'Categoria Pai', style: "display: block"  %>
+    <%= form.collection_select(
+      :super_category_id,
+      @top_level_categories, # 1. Coleção de objetos (as categorias top-level)
+      :id,                    # 2. Método ou coluna para o valor (o ID que será salvo)
+      :name,                  # 3. Método ou coluna para o texto (o nome que o usuário vê)
+      { include_blank: '— Nenhuma (Categoria Principal) —' } # 4. Opções
+    ) %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,99 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+$primary: #6F42C1; // set the $primary variable
+$secondary: #9F3FD9;
+$success: #38C29E;
+$info: #0091D5;
+$warning: #F5C63B;
+$danger: #C26F55;
+$light: $gray-100;
+$dark: $gray-800;
+
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "light": $light,
+    "dark": $dark,
+  );
+
+$theme-colors-rgb: (
+    "primary": to-rgb($primary),
+    "secondary": to-rgb($secondary),
+    "success": to-rgb($success),
+    "info": to-rgb($info),
+    "warning": to-rgb($warning),
+    "danger": to-rgb($danger),
+    "light": to-rgb($light),
+    "dark": to-rgb($dark),
+  );
+
+$table-variants: (
+  "primary":    shift-color($primary, $table-bg-scale),
+  "secondary":  shift-color($secondary, $table-bg-scale),
+  "success":    shift-color($success, $table-bg-scale),
+  "info":       shift-color($info, $table-bg-scale),
+  "warning":    shift-color($warning, $table-bg-scale),
+  "danger":     shift-color($danger, $table-bg-scale),
+  "light":      $light,
+  "dark":       $dark,
+);
+
+$all-colors: map-merge-multiple(
+  $blues,
+  $indigos,
+  $purples,
+  $pinks,
+  $reds,
+  $oranges,
+  $yellows,
+  $greens,
+  $teals,
+  $cyans
+);
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "color":
+      map-merge(
+        map-get($utilities, "color"),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, "color"), "values"),
+              ($all-colors)
+            ),
+        )
+      ),
+    "background-color":
+      map-merge(
+        map-get($utilities, "background-color"),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, "background-color"), "values"),
+              ($all-colors)
+            ),
+        )
+      ),
+  )
+);
+
+
+
+// merge with existing $theme-colors map
+// $theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "bootstrap/scss/utilities/api";
+
+@import url("https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
+$font-family-base: 'Sansation';

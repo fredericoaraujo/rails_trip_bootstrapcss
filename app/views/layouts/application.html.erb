@@ -17,7 +17,10 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-body-secondary">
+    <div class="container bg-light min-vh-100">
+      <%= render 'shared/dashboard/navbar' %>
+      <%= yield %>
+    </div>
   </body>
 </html>

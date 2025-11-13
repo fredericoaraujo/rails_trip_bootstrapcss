@@ -5,18 +5,36 @@
     <h1 class="text-secondary-emphasis">Categories</h1>
   </div>
   <div class="col-2">
-    <% content_for :title, "Categories" %> <%= link_to "+",
-    new_category_path, class: 'btn btn-sm btn-primary rounded' %>
+    <% content_for :title, "Categories" %> <%= link_to "+", new_category_path,
+    class: 'btn btn-sm btn-primary rounded' %>
   </div>
 </div>
-<div id="categories">
+<div id="categories" class="row">
   <% @categories.each do |category| %>
-  <div id="<%= dom_id category %>">
-    <div class="row col-12 bg-body">
-      <div class="col-8">
-        <p class="fs-3 fw-bold text-secondary"><%= category.name %></p>
+  <div class="col-6">
+    <div class="card mt-4">
+      <div class="card-body">
+        <h5 class="card-title fs-3"><%= category.name %></h5>
+        <% if category.sub_category.any? %>
+          <% category.sub_category.each do |sub| %>
+            <div class="row odd">
+              <span class="col-8"><%= sub.name %></span>
+              <span class="col-4">
+                <%= link_to sub, class: 'btn btn-sm bg-pink-100' do %>
+                <i class="bi bi-eye"></i>
+                <% end %>
+                <%= link_to edit_category_path(sub), class: 'btn btn-sm bg-yellow-100' do %>
+                  <i class="bi bi-pencil-square"></i>
+                <% end %>
+                <%= link_to sub, data: { "turbo-method": :delete }, class: 'btn btn-sm bg-red-500 text-white' do %>
+                  <i class="bi bi-trash2-fill"></i>
+                <% end %>
+              </p>
+            </div>
+          <% end %>
+        <% end %>
       </div>
-      <div class="col-4 align-content-between pt-2">
+      <div class="card-footer">
         <p>
           <%= link_to category, class: 'btn btn-sm bg-indigo-200' do %>
           <i class="bi bi-eye"></i> Detalhar <% end %>
@@ -24,15 +42,5 @@
       </div>
     </div>
   </div>
-  <% if category.sub_category.any? %>
-  <div class="ml-3">
-    <% category.sub_category.each do |sub| %>
-    <div id="<%= dom_id sub %>">
-      <p class="fs-5 fw-bold"><%= sub.name %></p>
-    </div>
-    <% end %>
-  </div>
-  <% end %>
-  <hr />
   <% end %>
 </div>

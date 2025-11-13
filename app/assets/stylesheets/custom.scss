@@ -5,6 +5,18 @@
 @import "bootstrap/scss/utilities";
 @import 'bootstrap-icons/font/bootstrap-icons';
 
+$white:    #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black:    #000;
+
 $primary: #2675A6; // set the $primary variable
 $secondary: #D97E4A;
 $success: #38C29E;
@@ -14,6 +26,7 @@ $danger: #BF6550;
 $light: $gray-100;
 $dark: $gray-800;
 
+
 $theme-colors: (
     "primary": $primary,
     "secondary": $secondary,
@@ -22,7 +35,7 @@ $theme-colors: (
     "warning": $warning,
     "danger": $danger,
     "light": $light,
-    "dark": $dark,
+    "dark": $dark
   );
 
 $theme-colors-rgb: (
@@ -95,7 +108,3 @@ $utilities: map-merge(
 
 @import "bootstrap/scss/utilities/api";
 @import 'bootstrap/scss/bootstrap';
-
-@import url("https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
-
-$font-family-base: 'Sansation';

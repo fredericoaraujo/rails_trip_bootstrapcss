@@ -1,2 +1,46 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="row">
+  <h1 class="fs-1 fw-bold">Current Trip: Paris 2024</h1>
+</div>
+<div id="cards_payments" class="row">
+  <div id="total_trip_cost" class="col-4 text-center">
+    <div class="p-4 card bg-white">
+      <div class="fs-5 fw-bold">Total Trip Cost</div>
+      <div class="fs-3 fw-bold">$ 8,500.00</div>
+    </div>
+  </div>
+  <!-- total_trip_cost end -->
+  <div id="total_paid" class="col-4 text-center">
+    <div class="p-4 card bg-green-100">
+      <div class="fs-5 fw-bold text-green-500">Total Paid</div>
+      <div class="fs-3 fw-bold text-green-600">$ 8,500.00</div>
+    </div>
+  </div>
+  <!-- total_paid end -->
+  <div id="remaing_to_pay" class="col-4 text-center">
+    <div class="p-4 card bg-red-100">
+      <div class="fs-5 fw-bold text-red-500">Remaing to Pay</div>
+      <div class="fs-3 fw-bold text-red-600">$ 8,500.00</div>
+    </div>
+  </div>
+  <!-- remaing_to_pay end -->
+</div>
+<!-- cards_payments end -->
+<div id="chart_expenses_by_category" class="row mt-4">
+  <div id="chart_by_category" class="col-8">
+    <p class="fs-4 fw-bold">Expenses by Category</p>
+    <div class="card bd-white">chart</div>
+  </div>
+  <!-- chart_by_category end -->
+  <div id="exchange_rate" class="col-4">
+    <p class="fs-4 fw-bold">Exchange Rate</p>
+    <div class="card bd-white">data</div>
+  </div>
+</div><!-- chart_expenses_by_category end -->
+
+<div class="row mt-4">
+  <div id="chart_by_payment_method" class="col-12">
+    <p class="fs-4 fw-bold">Expenses by Payment Method</p>
+    <div class="card bd-white">chart</div>
+  </div>
+  <!-- chart_by_payment_method end -->
+</div>

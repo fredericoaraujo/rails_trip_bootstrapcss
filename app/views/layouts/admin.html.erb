@@ -4,23 +4,71 @@
     <title><%= content_for(:title) || "Trip" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <%= csrf_meta_tags %> <%= csp_meta_tag %> <%= yield :head %>
-
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= yield :head %>
     <link rel="manifest" href="/manifest.json" />
     <link rel="icon" href="/icon.png" type="image/png" />
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/icon.png" />
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %> <%=
-    javascript_include_tag "application", "data-turbo-track": "reload", type:
-    "module" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type:"module" %>
   </head>
 
-  <body class="bg-body-secondary">
-    <div class="container bg-light-subtle min-vh-100">
-      <%= render 'shared/dashboard/navbar' %>
-      <div class="mt-3">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+  <body class="bg-light">
+    <div class="container min-vh-100">
+      <nav class="navbar navbar-expand-lg border-bottom border-body" data-bs-theme="light">
+        <%= link_to 'Trip', root_path, class: 'navbar-brand fs-3 fw-bold' %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <%= link_to home_index_path, class: 'nav-link' do %>
+                <i class="bi bi-clipboard-data"></i> Dashboard
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to home_index_path, class: 'nav-link' do %>
+                <i class="bi bi-piggy-bank"></i> Despesas
+              <% end %>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-sliders"></i> Configuração
+              </a>
+              <ul class="dropdown-menu bg-light">
+                <li><a class="dropdown-item" href="#"><i class="bi bi-tag"></i> Categorias de Despesas</a></li>
+                <li><a class="dropdown-item" href="#"><i class="bi bi-wallet2"></i> Formas de Pagamento</a></li>
+                <li><a class="dropdown-item" href="#"><i class="bi bi-cash-coin"></i> Moedas </a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a href="#" class="btn bg-green-500 text-white fw-bold">Nova Viagem</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                <i class="bi bi-person-circle"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end bg-light">
+                <li><a class="dropdown-item" href="#"><i class="bi bi-tag"></i> Categorias de Despesas</a></li>
+                <li><a class="dropdown-item" href="#"><i class="bi bi-wallet2"></i> Formas de Pagamento</a></li>
+                <li><a class="dropdown-item" href="#"><i class="bi bi-cash-coin"></i> Moedas </a></li>
+                <li>
+                  <%= link_to destroy_user_session_path, data: { "turbo-method":
+                  :delete }, class:'dropdown-item fw-bold text-danger' do %>
+                    <i class="bi bi-box-arrow-right"></i> Sair
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+            
+          </ul>
+      </nav><!-- navbar - end -->
+      <div class="row mt-3">
         <%= yield %>
       </div>
     </div>

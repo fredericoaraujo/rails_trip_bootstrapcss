@@ -1,24 +1,24 @@
 <div class="row">
-  <h1 class="fs-1 fw-bold">Current Trip: Paris 2024</h1>
+  <h1 class="fs-1 fw-bold">Viagem atual: Paris 2024</h1>
 </div>
 <div id="cards_payments" class="row">
   <div id="total_trip_cost" class="col-4 text-center">
     <div class="p-4 card bg-white">
-      <div class="fs-5 fw-bold">Total Trip Cost</div>
+      <div class="fs-5 fw-bold">Custo total</div>
       <div class="fs-3 fw-bold">$ 8,500.00</div>
     </div>
   </div>
   <!-- total_trip_cost end -->
   <div id="total_paid" class="col-4 text-center">
     <div class="p-4 card bg-green-100">
-      <div class="fs-5 fw-bold text-green-500">Total Paid</div>
+      <div class="fs-5 fw-bold text-green-500">Total Pago</div>
       <div class="fs-3 fw-bold text-green-600">$ 8,500.00</div>
     </div>
   </div>
   <!-- total_paid end -->
   <div id="remaing_to_pay" class="col-4 text-center">
     <div class="p-4 card bg-red-100">
-      <div class="fs-5 fw-bold text-red-500">Remaing to Pay</div>
+      <div class="fs-5 fw-bold text-red-500">Falta Pagar</div>
       <div class="fs-3 fw-bold text-red-600">$ 8,500.00</div>
     </div>
   </div>
@@ -27,20 +27,153 @@
 <!-- cards_payments end -->
 <div id="chart_expenses_by_category" class="row mt-4">
   <div id="chart_by_category" class="col-8">
-    <p class="fs-4 fw-bold">Expenses by Category</p>
-    <div class="card bd-white">chart</div>
+    <p class="fs-4 fw-bold">Gastos por Categoria</p>
+    <div class="card bd-white">
+      <div class="row">
+        <div class="col-6 p-2">
+          <canvas id="myDoughnut"></canvas>
+        </div>
+        <div class="col-6 p-2">
+          <div class="row text-center">
+            <div class="col-6">
+              <p class="fw-bold">Categoria</p>
+            </div>
+            <div class="col-6">
+              <p class="fw-bold">Valor</p>
+            </div>
+          </div>
+          <div class="row col-12 border-bottom">
+            <div class="col-6">
+              <p class="fw-bold text-green-500">Acomodações</p>
+            </div>
+            <div class="col-5 text-end">
+              <p class="text-black-50">R$ 20.000,00</p>
+            </div>
+          </div>
+          <div class="row col-12 border-bottom">
+            <div class="col-6">
+              <p class="fw-bold text-red-500">Transportes</p>
+            </div>
+            <div class="col-5 text-end">
+              <p class="text-black-50">R$ 20.000,00</p>
+            </div>
+          </div>
+          <div class="row col-12 border-bottom">
+            <div class="col-6">
+              <p class="fw-bold text-yellow-500">Atvidades</p>
+            </div>
+            <div class="col-5 text-end">
+              <p class="text-black-50">R$ 20.000,00</p>
+            </div>
+          </div>
+          <div class="row col-12 border-bottom">
+            <div class="col-6">
+              <p class="fw-bold text-blue-500">Comida</p>
+            </div>
+            <div class="col-5 text-end">
+              <p class="text-black-50">R$ 20.000,00</p>
+            </div>
+          </div>
+          <div class="row col-12 border-bottom">
+            <div class="col-6">
+              <p class="fw-bold text-indigo-500">Outros</p>
+            </div>
+            <div class="col-5 text-end">
+              <p class="text-black-50">R$ 20.000,00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- chart_by_category end -->
   <div id="exchange_rate" class="col-4">
-    <p class="fs-4 fw-bold">Exchange Rate</p>
-    <div class="card bd-white">data</div>
+    <p class="fs-4 fw-bold">Câmbio + Taxas</p>
+    <div class="card bd-white p-4">
+      <div class="row col-12">
+        <div class="col-7">
+          <p class="fw-bold">Moeda Principal</p>
+        </div>
+        <div class="col-5 text-end">
+          <p class="fw-bold text-cyan-400">USD</p>
+        </div>
+      </div>
+      <div class="row col-12">
+        <div class="col-6">
+          <p class="fw-bold">Câmbio</p>
+        </div>
+        <div class="col-6 text-end">
+          <p class="text-black-50">R$ 5,50</p>
+        </div>
+      </div>
+      <div class="row col-12">
+        <p class="small text-dark-emphasis">Câmbio com taxas inclusas</p>
+      </div>
+    </div>
   </div>
-</div><!-- chart_expenses_by_category end -->
+</div>
+<!-- chart_expenses_by_category end -->
 
 <div class="row mt-4">
   <div id="chart_by_payment_method" class="col-12">
-    <p class="fs-4 fw-bold">Expenses by Payment Method</p>
-    <div class="card bd-white">chart</div>
+    <p class="fs-4 fw-bold">Gastos por Forma de Pagamento</p>
+    <div class="card bd-white m-3 my-lg-5 py-3">
+      <canvas id="myChart"></canvas>
+    </div>
   </div>
   <!-- chart_by_payment_method end -->
 </div>
+
+<script>
+  const myChart = document.getElementById("myChart").getContext("2d");
+  new Chart(myChart, {
+    type: "bar",
+    data: {
+      labels: ["Jan", "Fev", "Mar", "Abr", "Mai"],
+      datasets: [
+        {
+          label: "Vendas",
+          data: [12, 19, 3, 5, 2],
+          backgroundColor: "rgba(54, 162, 235, 0.2)",
+          borderColor: "rgba(54, 162, 235, 1)",
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+  const myDoughnut = document.getElementById("myDoughnut").getContext("2d");
+  new Chart(myDoughnut, {
+    type: "doughnut",
+    data: {
+      labels: ["Acomodações", "Transporte", "Atividades", "Comida", "Outros"],
+      datasets: [
+        {
+          label: "",
+          data: [200, 400, 50, 150, 200],
+          backgroundColor: [
+            "rgb(117, 183, 152.4)",
+            "rgb(234, 133.8, 143.4)",
+            "rgb(255, 217.8, 106.2)",
+            "rgb(61.4, 139, 253.4)",
+            "rgb(132.6, 63.8, 244.6)",
+          ],
+          hoverOffset: 4,
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+    }
+  });
+</script>
